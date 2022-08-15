@@ -1,5 +1,6 @@
 ﻿using System;
 using LinqTutorial.MethodSyntax;
+using System.Linq;
 
 namespace LinqTutorial
 {
@@ -8,12 +9,18 @@ namespace LinqTutorial
         static void Main(string[] args)
         {
             //METHOD SYNTAX
+            var wordNoUppercase = new string[]{
+                "quick", "slow", "brown"
+            };
+
+            // var orderedWords = wordNoUppercase.OrderBy(word => word);
 
             //Any.Run();
             //All.Run();
-            //Count.Run();
+            System.Console.WriteLine("Exercise");
+            Count.Run();
             //Contains.Run();
-            //OrderBy.Run();
+            // OrderBy.Run();
             //MinMax.Run();
             //Average.Run();
             //Sum.Run();
@@ -49,7 +56,7 @@ namespace LinqTutorial
             //OTHERS
             //DotNet6Improvements.Run();
 
-            Console.ReadKey();
+            Console.Read();
         }
     }
 }
