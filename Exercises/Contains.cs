@@ -55,7 +55,7 @@ namespace Exercises
         public static int CountFriendsOf(Friend friend, IEnumerable<Person> people)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return people.Count(person => person.Friends.Contains(friend));
         }
 
         //Refactoring challenge
@@ -64,7 +64,17 @@ namespace Exercises
             IEnumerable<string> words, IEnumerable<string> bannedWords)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            //bool banned_word = false;
+
+            /* // first thought of this solution:
+            foreach (string word in bannedWords){
+                if (words.Contains(word)){
+                    banned_word = true;
+                }
+            } */
+            //return banned_word;
+            // then thought of this with Any:
+            return bannedWords.Any(word => words.Contains(word));
         }
 
         //do not modify this method
