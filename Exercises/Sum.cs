@@ -48,7 +48,11 @@ namespace Exercises
             IEnumerable<Student> students)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            var result = heights == null || !heights.Any() ? 
+                0 :
+                heights.Average(
+                    height => height == null ? defaultIfNull : height.Value);
+            return (float)result;
         }
 
         //do not modify this method

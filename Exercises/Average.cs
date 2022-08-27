@@ -64,7 +64,9 @@ namespace Exercises
         {
             //TODO your code goes here
             var result = heights == null || !heights.Any() ? 
-            0 : heights.Average(height => height == null ? defaultIfNull: height.Value) : 0;
+                0 :
+                heights.Average(
+                    height => height == null ? defaultIfNull : height.Value);
             return (float)result;
         }
 
