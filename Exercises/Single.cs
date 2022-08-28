@@ -23,7 +23,7 @@ namespace Exercises
         public static string GetTheOnlyUpperCaseWord(IEnumerable<string> words)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return words.SingleOrDefault(word => word.All(ch => char.IsUpper(ch)));
         }
 
         /*

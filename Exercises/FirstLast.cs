@@ -20,7 +20,7 @@ namespace Exercises
         public static string FindFirstNameInTheCollection(IEnumerable<string> words)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return words.FirstOrDefault(word => word.Count() > 2 && word.First() >= 'A');
         }
 
         //Coding Exercise 2
@@ -33,7 +33,7 @@ namespace Exercises
         public static Person GetYoungest(IEnumerable<Person> people)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return people.Any() ? people.OrderBy(p => p.DateOfBirth).First() : null;
         }
 
         //Refactoring challenge
