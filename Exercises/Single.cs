@@ -60,7 +60,7 @@ namespace Exercises
             IEnumerable<IEnumerable<int>> numberCollections)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return numberCollections.Single(collection => collection.Count() == 1);
         }
 
         //Refactoring challenge
@@ -69,7 +69,7 @@ namespace Exercises
             IEnumerable<DateTime> dates, DayOfWeek dayOfWeek)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return dates.SingleOrDefault(date => date.DayOfWeek == dayOfWeek);
         }
 
         //do not modify this method

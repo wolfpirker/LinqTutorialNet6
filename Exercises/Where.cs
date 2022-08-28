@@ -30,7 +30,12 @@ namespace Exercises
             IEnumerable<Student> students)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return students.Where(student => 
+            {
+                var averageMark = student.Marks.Any() ? 
+                student.Marks.Average() : 0;
+                return averageMark > 4.6f;
+            }); 
         }
 
         //Coding Exercise 2
@@ -56,7 +61,10 @@ namespace Exercises
             IEnumerable<string> words)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            words.Where(word =>
+            {
+
+            });
         }
 
         //Refactoring challenge
