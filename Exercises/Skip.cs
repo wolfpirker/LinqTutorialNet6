@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Exercises
 {
@@ -23,7 +24,8 @@ namespace Exercises
         public static double CalculateAverageMark(Student student)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return student.Marks.Count() > 2 ? 
+                student.Marks.OrderBy(mark => mark).Skip(1).SkipLast(1).Average() : 0;
         }
 
         //Coding Exercise 2
@@ -48,10 +50,16 @@ namespace Exercises
             *{"aaa",  "START", "ccc",  "END ", "END"} - because END occurs twice
             *{"aaa",  "END ", "ccc",  "START"} - because START is placed after END
          */
+        private  const string Start = "START";
+        private const string  End = "END";
+         
         public static IEnumerable<string> GetWordsBetweenStartAndEnd(List<string> words)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            bool isValidCollection = words.Count(word => word.Equals(Start)) == 1 && words.Count(word => word.Equals(End)) == 1;
+            isValidCollection && words.IndexOf(Start) < words.IndexOf(End) ? 
+                return words.SkipWhile(word => !word.Equals("START")).Skip(1).TakeWhile(word => !word.Equals("END")).SkipLast(1) :
+                return null;
         }
 
         //Refactoring challenge

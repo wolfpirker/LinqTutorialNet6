@@ -21,7 +21,16 @@ namespace Exercises
         public static IEnumerable<int> TakeSome(IEnumerable<int> numbers)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            int count = numbers.Count();
+            if (count <10){
+                return numbers.Take(3);
+            }
+            else if ((count >=10) && (count < 100)){
+                return numbers.Take(30);
+            }
+            else{
+                return numbers.Take(count);
+            }
         }
 
         //Coding Exercise 2
@@ -45,7 +54,8 @@ namespace Exercises
             IEnumerable<Pet> pets, int percent)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            int numberToTake = Convert.ToInt32(pets.Count()*percent/100);
+            return pets.OrderBy(pet => pet.Weight).Take(numberToTake);
         }
 
         //Refactoring challenge
