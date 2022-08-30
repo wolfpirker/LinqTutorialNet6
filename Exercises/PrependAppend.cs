@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Exercises
 {
@@ -52,7 +53,14 @@ namespace Exercises
             IEnumerable<int> numbers)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            if (!numbers.Any()) return new int[]{};
+            int firstNum = numbers.First();
+            int lastNum = numbers.Last();
+            
+            numbers = numbers.SkipWhile(num => num == firstNum);
+            numbers = numbers.TakeWhile(num => num != lastNum);
+            return firstNum == lastNum ? numbers.Prepend(firstNum) : 
+                numbers.Prepend(firstNum).Append(lastNum);
         }
 
         //Refactoring challenge
