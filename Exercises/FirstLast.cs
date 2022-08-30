@@ -41,7 +41,7 @@ namespace Exercises
         public static Person FindOwnerOf_Refactored(Pet pet, IEnumerable<Person> people)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return people.First(person => person.Pets.Any(pet2 => pet2.Equals(pet)));
         }
 
         //do not modify this method

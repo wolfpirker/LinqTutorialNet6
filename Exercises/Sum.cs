@@ -48,11 +48,7 @@ namespace Exercises
             IEnumerable<Student> students)
         {
             //TODO your code goes here
-            var result = heights == null || !heights.Any() ? 
-                0 :
-                heights.Average(
-                    height => height == null ? defaultIfNull : height.Value);
-            return (float)result;
+            return students.Any(student => student.Marks.Sum() > 100);
         }
 
         //do not modify this method

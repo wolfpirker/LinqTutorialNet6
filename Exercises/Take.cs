@@ -55,7 +55,7 @@ namespace Exercises
         {
             //TODO your code goes here
             int numberToTake = Convert.ToInt32(pets.Count()*percent/100);
-            return pets.OrderBy(pet => pet.Weight).Take(numberToTake);
+            return pets.OrderByDescending(pet => pet.Weight).Take(numberToTake);
         }
 
         //Refactoring challenge

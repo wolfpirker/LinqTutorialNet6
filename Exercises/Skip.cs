@@ -57,9 +57,9 @@ namespace Exercises
         {
             //TODO your code goes here
             bool isValidCollection = words.Count(word => word.Equals(Start)) == 1 && words.Count(word => word.Equals(End)) == 1;
-            isValidCollection && words.IndexOf(Start) < words.IndexOf(End) ? 
-                return words.SkipWhile(word => !word.Equals("START")).Skip(1).TakeWhile(word => !word.Equals("END")).SkipLast(1) :
-                return null;
+            return (isValidCollection && words.IndexOf(Start) < words.IndexOf(End)) ? 
+                words.SkipWhile(word => !word.Equals("START")).Skip(1).TakeWhile(word => !word.Equals("END")) :
+                Enumerable.Empty<string>();
         }
 
         //Refactoring challenge

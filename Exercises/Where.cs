@@ -61,9 +61,9 @@ namespace Exercises
             IEnumerable<string> words)
         {
             //TODO your code goes here
-            words.Where(word =>
+            return words.Where((word, index) =>
             {
-
+                return word.StartsWith($"{index + 1}");
             });
         }
 
@@ -73,7 +73,10 @@ namespace Exercises
             IEnumerable<Person> people)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return people.Where(person => 
+            {
+               return person.Pets.Count(pet => pet.PetType == PetType.Fish) >= 2;
+            });
         }
 
         //do not modify this method
