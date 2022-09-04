@@ -27,7 +27,11 @@ namespace Exercises
             IEnumerable<string> words)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return words.Distinct().ToDictionary(word => word,
+                word => {
+                    int parseResult;
+                    return int.TryParse(word, out parseResult) ? parseResult : (int?)null;                    
+                });
         }
 
         //Coding Exercise 2
@@ -46,7 +50,10 @@ namespace Exercises
             IEnumerable<int> input)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return input.ToLookup(
+                value => (value % 2) == 0,
+                value => value
+            );
         }
 
         //Refactoring challenge
