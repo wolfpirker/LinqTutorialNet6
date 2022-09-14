@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,7 +28,16 @@ namespace Exercises
         public static IEnumerable<int> GetNumbers(IEnumerable<object> objects)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return objects.OfType<int>().Concat(
+                objects.OfType<string>().Select(text => {
+                    int result;
+                    return int.TryParse(text, out result) ?
+                        result :
+                        (int?) null;
+                })
+                .Where(nullableNumber => nullableNumber != null) // omit null values
+                .Select(nullableNumber => nullableNumber.Value)) // take Value
+                .OrderBy(number => number);
         }
 
         //Coding Exercise 2
@@ -51,10 +62,33 @@ namespace Exercises
         As you can see in the example the separator between each person's data is ";", 
         and the full name and the date of birth are separated with ",".
          */
+
+         public static DateTime? TryParse(string text)
+        {
+            DateTime date;
+            return DateTime.TryParse(text, out date) ? date : (DateTime?) null;
+        }
         public static IEnumerable<Person> PeopleFromString(string input)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            // Note: input string could be e.g.:
+            // "John Smith, 1983/08/21;Jane Doe, 1993/12/21;Francis Brown, invalid date here"
+            // NOTE: IT IS only one string - not a collection of strings! also Note separator of records is ';'
+            string[] records = input.Split(';');
+            return records.Select(record => 
+            {
+                string[] values = record.Split(',');
+                
+                var dateOfBirth = TryParse(values[1].Trim());                
+                return dateOfBirth != null ? 
+                new Person
+                {                
+                     FirstName = values[0].Split(' ')[0],
+                     LastName = values[0].Split(' ')[1],
+                     DateOfBirth = (DateTime)dateOfBirth
+
+                } : null;
+            }).Where(person => person != null);
         }
 
         //Refactoring challenge
