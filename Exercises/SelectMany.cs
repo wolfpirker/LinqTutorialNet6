@@ -18,7 +18,9 @@ namespace Exercises
             HashSet<int> numbers)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return numbers.SelectMany(
+                num1 => numbers,
+                (num1, num2) => $"{num1},{num2}");
         }
 
         //Coding Exercise 2
@@ -54,7 +56,16 @@ namespace Exercises
             IEnumerable<Student> students)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return students.SelectMany(student => student.Marks,
+            (student, marks) => new {Student = student, Mark = marks })
+            .OrderByDescending(studentMarkPair => studentMarkPair.Mark)
+            .ThenBy(studentMarkPair => studentMarkPair.Student.Name)
+            .Take(5)
+            .Select(studentMarkPair =>
+                $"{studentMarkPair.Student.Name}: {studentMarkPair.Mark}"
+            );
+              
+            
         }
 
         //Refactoring challenge

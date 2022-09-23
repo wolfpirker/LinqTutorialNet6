@@ -96,7 +96,12 @@ namespace Exercises
         public static TimeSpan TotalDurationOfSongs_Refactored(string allSongsDuration)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return string.IsNullOrEmpty(allSongsDuration) ? new TimeSpan() :
+                TimeSpan.FromSeconds(            
+                allSongsDuration.Split(',')
+                .Select(durationAsString => TimeSpan.ParseExact(
+                    durationAsString, @"m\:ss", null))
+                    .Sum(timespan => timespan.TotalSeconds));                
         }
 
         //do not modify this method
