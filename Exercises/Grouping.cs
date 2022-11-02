@@ -58,8 +58,10 @@ namespace Exercises
          */
         public static PetType? FindTheHeaviestPetType(IEnumerable<Pet> pets)
         {
-            //TODO your code goes here
-            throw new NotImplementedException();
+            var groupings = pets.GroupBy(pet => pet.PetType);
+            return groupings
+            .OrderBy(group => group.Average(pet => pet.Weight))
+            .Last().Key;
         }
 
         //Refactoring challenge

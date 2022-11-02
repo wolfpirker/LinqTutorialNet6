@@ -25,7 +25,9 @@ namespace Exercises
             IEnumerable<string> words2)
         {
             //TODO your code goes here
-            throw new NotImplementedException();
+            return words1.Select(word => word.ToUpper())
+                .Intersect(words2.Select(word => word.ToUpper()))
+                .Count();
         }
 
         //Coding Exercise 2
